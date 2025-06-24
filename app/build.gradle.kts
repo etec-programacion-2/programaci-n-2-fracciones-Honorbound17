@@ -20,15 +20,15 @@ repositories {
 
 dependencies {
     // Use the Kotlin JUnit 5 integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.9.10")
 
     // Use the JUnit 5 integration.
-    testImplementation(libs.junit.jupiter.engine)
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
 
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.9.3")
 
     // This dependency is used by the application.
-    implementation(libs.guava)
+    implementation("com.google.guava:guava:32.0.1-jre")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

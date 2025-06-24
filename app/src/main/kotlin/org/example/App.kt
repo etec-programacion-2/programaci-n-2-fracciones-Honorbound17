@@ -4,5 +4,17 @@
 package org.example
 
 fun main() {
-    println("Hola app!")
+    println("Bienvenido al programa de fracciones")
+
+    val fraccion1 = Fraccion(3, 4)
+    fraccion1.mostrar()
+
+    val fraccion2 = Fraccion(5, 8)
+    fraccion2.mostrar()
+
+    val suma = fraccion1 + fraccion2
+    suma.mostrar()
+
+    val resta = fraccion1 - fraccion2
+    resta.mostrar()
 }
