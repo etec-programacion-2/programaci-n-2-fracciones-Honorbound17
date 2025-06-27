@@ -19,6 +19,7 @@ class Fraccion(var numerador: Int, denominador: Int) {
     fun mostrar() {
         println(toString())
     }
+
     // Operador Suma
     operator fun plus(otra: Fraccion): Fraccion {
         val nuevoNumerador = this.numerador * otra.denominador + this.denominador * otra.numerador
@@ -30,6 +31,21 @@ class Fraccion(var numerador: Int, denominador: Int) {
     operator fun minus(otra: Fraccion): Fraccion {
         val nuevoNumerador = this.numerador * otra.denominador - this.denominador * otra.numerador
         val nuevoDenominador = this.denominador * otra.denominador
+        return Fraccion(nuevoNumerador, nuevoDenominador).simplificar()
+    }
+
+    // Operador Multiplicación
+    operator fun times(otra: Fraccion): Fraccion {
+        val nuevoNumerador = this.numerador * otra.numerador
+        val nuevoDenominador = this.denominador * otra.denominador
+        return Fraccion(nuevoNumerador, nuevoDenominador).simplificar()
+    }
+
+    // Operador División
+    operator fun div(otra: Fraccion): Fraccion {
+        if (otra.numerador == 0) throw IllegalArgumentException("No se puede dividir por una fracción con numerador cero")
+        val nuevoNumerador = this.numerador * otra.denominador
+        val nuevoDenominador = this.denominador * otra.numerador
         return Fraccion(nuevoNumerador, nuevoDenominador).simplificar()
     }
 

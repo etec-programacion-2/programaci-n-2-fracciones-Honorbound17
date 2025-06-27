@@ -4,17 +4,27 @@
 package org.example
 
 fun main() {
-    println("Bienvenido al programa de fracciones")
-
-    val fraccion1 = Fraccion(3, 4)
+    println("Bienvenido al programa de fracciones. \n")
+    
+    println("Fracciones de ejemplo:")
+    val fraccion1 = Fraccion(11, 6)
     fraccion1.mostrar()
-
-    val fraccion2 = Fraccion(5, 8)
+    val fraccion2 = Fraccion(7, 4)
     fraccion2.mostrar()
 
+    println("\nEjercicio de Suma:")
     val suma = fraccion1 + fraccion2
     suma.mostrar()
 
+    println("\nEjercicio de Resta:")
     val resta = fraccion1 - fraccion2
     resta.mostrar()
+
+    println("\nEjercicio de Multiplicación:")
+    val multiplicacion = fraccion1 * fraccion2
+    multiplicacion.mostrar()
+
+    println("\nEjercicio de División:")
+    val division = fraccion1 / fraccion2
+division.mostrar()
 }
