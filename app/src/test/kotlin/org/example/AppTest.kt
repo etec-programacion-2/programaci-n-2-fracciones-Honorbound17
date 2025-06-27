@@ -3,12 +3,23 @@
  */
 package org.example
 
-import kotlin.test.Test
-import kotlin.test.assertNotNull
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 class AppTest {
-    @Test fun appHasAGreeting() {
-        val classUnderTest = App()
-        assertNotNull(classUnderTest.greeting, "app should have a greeting")
+
+    @Test
+    fun testFraccionToString() {
+        val fraccion = Fraccion(3, 4)
+        assertEquals("3/4", fraccion.toString())
+    }
+
+    @Test
+    fun testDenominadorCero() {
+        try {
+            Fraccion(1, 0)
+        } catch (e: IllegalArgumentException) {
+            assertEquals("El denominador no puede ser cero", e.message)
+        }
     }
 }
