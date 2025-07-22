@@ -26,5 +26,11 @@ fun main() {
 
     println("\nEjercicio de División:")
     val division = fraccion1 / fraccion2
-division.mostrar()
+    division.mostrar()
+
+    println("Fracción 1 en decimal: ${fraccion1.aDecimal()}")
+    println("Fracción 2 en decimal: ${fraccion2.aDecimal()}")
+
+    val fraccionDesdeDecimal = Fraccion.desdeDecimal(0.375)
+    println("Fracción desde decimal: ${fraccionDesdeDecimal}")
 }

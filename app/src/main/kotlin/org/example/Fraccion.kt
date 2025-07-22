@@ -1,6 +1,6 @@
 package org.example
 
-class Fraccion(var numerador: Int, denominador: Int) {
+class Fraccion(var numerador: Int, denominador: Int) : Comparable<Fraccion> {
 
     var denominador: Int = denominador
         set(value) {
@@ -49,6 +49,41 @@ class Fraccion(var numerador: Int, denominador: Int) {
         return Fraccion(nuevoNumerador, nuevoDenominador).simplificar()
     }
 
+    // Operador Igualdad
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Fraccion) return false
+        val simplificada1 = this.simplificar()
+        val simplificada2 = other.simplificar()
+        return simplificada1.numerador == simplificada2.numerador &&
+               simplificada1.denominador == simplificada2.denominador
+    }
+
+    // Método para saber si una Fracción es Mayor
+    fun esMayor(otra: Fraccion): Boolean {
+        return this.compareTo(otra) > 0
+    }
+
+    // Método para saber si una Fracción es Menor
+    fun esMenor(otra: Fraccion): Boolean {
+        return this.compareTo(otra) < 0
+    }
+
+    // Método de Fracción a Decimal
+    fun aDecimal(): Double {
+        return numerador.toDouble() / denominador.toDouble()
+    }
+
+    // Método para crear una Fracción desde Decimal
+    companion object {
+        fun desdeDecimal(decimal: Double): Fraccion {
+            val precision = 1_000_000
+            val numerador = (decimal * precision).toInt()
+            val denominador = precision
+            return Fraccion(numerador, denominador).simplificar()
+        }
+    }
+
     // Simplificación de la fracción
     private fun simplificar(): Fraccion {
         val mcd = calcularMCD(numerador, denominador)
@@ -65,5 +100,15 @@ class Fraccion(var numerador: Int, denominador: Int) {
             num1 = temp
         }
         return kotlin.math.abs(num1)
+    }
+
+    // Operador de comparación
+    override operator fun compareTo(otra: Fraccion): Int {
+        val diferencia = this.numerador * otra.denominador - otra.numerador * this.denominador
+        return when {
+            diferencia > 0 -> 1
+            diferencia < 0 -> -1
+            else -> 0
+        }
     }
 }
